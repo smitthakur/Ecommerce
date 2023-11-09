@@ -4,12 +4,16 @@ import com.blackbucks.ProductService.thirdPartyClient.FakeStoreProductServiceCli
 import com.blackbucks.ProductService.thirdPartyClient.FakeStoreProductDTO;
 import com.blackbucks.ProductService.dtos.GenericProductDTO;
 import com.blackbucks.ProductService.exceptions.ProductNotFoundException;
+import org.springframework.context.annotation.Primary;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Primary
 public class FakeStoreProductService implements ProductService{
 
     private FakeStoreProductServiceClient fakeStoreProductServiceClient;
@@ -47,8 +51,9 @@ public class FakeStoreProductService implements ProductService{
     }
 
     @Override
-    public GenericProductDTO createNewProduct(GenericProductDTO genericProductDTO) {
-        return convertFakeStoreProductIntoGenericProduct(fakeStoreProductServiceClient.createNewProduct(genericProductDTO));
+    public ResponseEntity createNewProduct(GenericProductDTO genericProductDTO) {
+        ResponseEntity responseEntity=new ResponseEntity(HttpStatus.CREATED);
+        return responseEntity;
     }
 
     @Override

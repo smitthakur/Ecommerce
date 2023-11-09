@@ -58,7 +58,7 @@ public class ProductController {
 //    }
 
     @PostMapping
-    public GenericProductDTO createProduct(@RequestBody GenericProductDTO genericProductDTO){
+    public ResponseEntity createProduct(@RequestBody GenericProductDTO genericProductDTO){
         return productService.createNewProduct(genericProductDTO);
     }
 

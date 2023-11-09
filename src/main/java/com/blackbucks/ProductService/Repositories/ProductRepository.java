@@ -44,4 +44,7 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
 
 //    @Query("select Product from Product where Product.price.currency = :currency and Product.title = :naman")
 //    List<Product> doSomething(String naman, String currency);
+
+    //create new product
+
 }

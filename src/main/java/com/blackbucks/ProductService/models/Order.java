@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Order extends BaseModel{
-    @ManyToMany
+    @ManyToMany()
     @JoinTable(
             name = "Product_Orders",
             joinColumns = @JoinColumn(name = "Order_id"),

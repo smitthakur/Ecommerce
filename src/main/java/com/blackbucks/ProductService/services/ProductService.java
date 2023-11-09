@@ -3,6 +3,8 @@ package com.blackbucks.ProductService.services;
 import com.blackbucks.ProductService.thirdPartyClient.FakeStoreProductDTO;
 import com.blackbucks.ProductService.dtos.GenericProductDTO;
 import com.blackbucks.ProductService.exceptions.ProductNotFoundException;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -12,7 +14,7 @@ public interface ProductService {
 
     public GenericProductDTO getProductById(long id) throws ProductNotFoundException;
 
-    public GenericProductDTO createNewProduct(GenericProductDTO genericProductDTO);
+    public ResponseEntity createNewProduct(GenericProductDTO genericProductDTO);
 
     public FakeStoreProductDTO deleteProductById(long id);
 
