@@ -17,8 +17,7 @@ public class Product extends BaseModel{
     @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name="category")
     private Category category;
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
-    private Price price; // should not be double as double has precision issues. using now because fakeStore uses double
+    private int price; // should not be double as double has precision issues. using now because fakeStore uses double
 
 
 }

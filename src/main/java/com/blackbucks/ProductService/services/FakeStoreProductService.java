@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Primary
+//@Primary
 public class FakeStoreProductService implements ProductService{
 
     private FakeStoreProductServiceClient fakeStoreProductServiceClient;
@@ -21,7 +21,7 @@ public class FakeStoreProductService implements ProductService{
     public GenericProductDTO convertFakeStoreProductIntoGenericProduct(FakeStoreProductDTO fakeStoreProductDTO){
         GenericProductDTO genericProductDTO=new GenericProductDTO();
         genericProductDTO.setTitle(fakeStoreProductDTO.getTitle());
-        genericProductDTO.setPrice(fakeStoreProductDTO.getPrice());
+        genericProductDTO.setPrice((int)(fakeStoreProductDTO.getPrice()));
         genericProductDTO.setCategory(fakeStoreProductDTO.getCategory());
         genericProductDTO.setDescription(fakeStoreProductDTO.getDescription());
         genericProductDTO.setImage(fakeStoreProductDTO.getImage());
