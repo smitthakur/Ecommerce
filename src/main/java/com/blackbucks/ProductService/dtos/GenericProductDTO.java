@@ -1,6 +1,7 @@
 package com.blackbucks.ProductService.dtos;
 
 import com.blackbucks.ProductService.models.Category;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import lombok.Setter;
 @Setter
 public class GenericProductDTO {
 
+    private Long id;
     private String title;
     private String description;
     private String image;
