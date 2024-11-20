@@ -16,4 +16,9 @@ public interface ThirdPartyProductServiceClient {
     public FakeStoreProductDTO deleteProductById(long id);
 
     public FakeStoreProductDTO updateProductById(long id, GenericProductDTO genericProductDTO);
+
+    public List<FakeStoreProductDTO> getProductsByCaterogy(String category);
+
+    public List<String> getAllCategories();
+
 }

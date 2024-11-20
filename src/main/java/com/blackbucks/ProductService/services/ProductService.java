@@ -19,4 +19,8 @@ public interface ProductService {
     public FakeStoreProductDTO deleteProductById(long id);
 
     public GenericProductDTO updateProductById(long id, GenericProductDTO genericProductDTO);
+
+    List<GenericProductDTO> getProductsByCategory(String category);
+
+    List<String> getAllProductCategories();
 }

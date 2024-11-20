@@ -28,6 +28,10 @@ public class FakeStoreProductServiceClient implements ThirdPartyProductServiceCl
     private String FakeStoreGetProductByIdURL=fakeStoreURL+fakeStoreProductApiPath+"/{id}";
     private String FakeStoreCreateProductURL=fakeStoreURL+fakeStoreProductApiPath;
 
+    private String FakeStoreGetAllCategoriesURL=fakeStoreURL+fakeStoreProductApiPath+"/categories";
+
+    private String FakeStoreGetProductsByCategoryURL=fakeStoreURL+fakeStoreProductApiPath+"/categories/{category}";
+
 
     public FakeStoreProductServiceClient(RestTemplateBuilder restTemplateBuilder){
         this.restTemplateBuilder=restTemplateBuilder;
@@ -93,9 +97,37 @@ public class FakeStoreProductServiceClient implements ThirdPartyProductServiceCl
     @Override
     public FakeStoreProductDTO updateProductById(long id, GenericProductDTO genericProductDTO) {
         RestTemplate restTemplate=restTemplateBuilder.build();
+        ResponseEntity<FakeStoreProductDTO> responseEntity=
+                restTemplate.postForEntity(FakeStoreCreateProductURL,genericProductDTO,FakeStoreProductDTO.class);
 
-//        ResponseEntity<GenericProductDTO> responseEntity=
-        restTemplate.put(FakeStoreGetProductByIdURL,genericProductDTO,GenericProductDTO.class,id);
-        return null;
+        FakeStoreProductDTO fakeStoreProductDTO=responseEntity.getBody();
+
+        return fakeStoreProductDTO;
+    }
+
+    @Override
+    public List<FakeStoreProductDTO> getProductsByCaterogy(String category) {
+        RestTemplate restTemplate=restTemplateBuilder.build();
+        ResponseEntity<FakeStoreProductDTO[]> responseEntity=
+                restTemplate.getForEntity(FakeStoreGetProductsByCategoryURL,FakeStoreProductDTO[].class);
+
+        List<FakeStoreProductDTO> productList=new ArrayList<>();
+        for(FakeStoreProductDTO fakeStoreProductDTO: responseEntity.getBody()){
+            productList.add(fakeStoreProductDTO);
+        }
+        return productList;
+    }
+
+    @Override
+    public List<String> getAllCategories() {
+        RestTemplate restTemplate=restTemplateBuilder.build();
+        ResponseEntity<String[]> responseEntity=
+                restTemplate.getForEntity(FakeStoreGetAllCategoriesURL,String[].class);
+
+        List<String> categoryList=new ArrayList<>();
+        for(String category: responseEntity.getBody()){
+            categoryList.add(category);
+        }
+        return categoryList;
     }
 }
